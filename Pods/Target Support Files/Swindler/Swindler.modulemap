@@ -1,0 +1,6 @@
+framework module Swindler {
+  umbrella header "Swindler-umbrella.h"
+
+  export *
+  module * { export * }
+}

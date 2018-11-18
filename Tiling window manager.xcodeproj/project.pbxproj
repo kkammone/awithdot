@@ -1,0 +1,662 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		820D9EFCFE19EBB2510CC653 /* Pods_Tiling_window_manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E4914BD681AA7B40621C47F /* Pods_Tiling_window_manager.framework */; };
+		F247845C219EDEF000F2B10D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247845B219EDEF000F2B10D /* AppDelegate.swift */; };
+		F247845E219EDEF000F2B10D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247845D219EDEF000F2B10D /* ViewController.swift */; };
+		F2478460219EDEF200F2B10D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F247845F219EDEF200F2B10D /* Assets.xcassets */; };
+		F2478463219EDEF300F2B10D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2478461219EDEF300F2B10D /* Main.storyboard */; };
+		F247846F219EDEF300F2B10D /* Tiling_window_managerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247846E219EDEF300F2B10D /* Tiling_window_managerTests.swift */; };
+		F247847A219EDEF300F2B10D /* Tiling_window_managerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2478479219EDEF300F2B10D /* Tiling_window_managerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F247846B219EDEF300F2B10D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2478450219EDEF000F2B10D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2478457219EDEF000F2B10D;
+			remoteInfo = "Tiling window manager";
+		};
+		F2478476219EDEF300F2B10D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2478450219EDEF000F2B10D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2478457219EDEF000F2B10D;
+			remoteInfo = "Tiling window manager";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1B419A6FC684783B534E1AA0 /* Pods-Tiling window manager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiling window manager.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tiling window manager/Pods-Tiling window manager.release.xcconfig"; sourceTree = "<group>"; };
+		5E4914BD681AA7B40621C47F /* Pods_Tiling_window_manager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiling_window_manager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A96F634E0413FA06A2E9B815 /* Pods_Tiling_window_managerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiling_window_managerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C90A9D8E4A10850129D9D24A /* Pods_Tiling_window_managerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiling_window_managerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2478458219EDEF000F2B10D /* Tiling window manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tiling window manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F247845B219EDEF000F2B10D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F247845D219EDEF000F2B10D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F247845F219EDEF200F2B10D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F2478462219EDEF300F2B10D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F2478464219EDEF300F2B10D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2478465219EDEF300F2B10D /* Tiling_window_manager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tiling_window_manager.entitlements; sourceTree = "<group>"; };
+		F247846A219EDEF300F2B10D /* Tiling window managerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tiling window managerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F247846E219EDEF300F2B10D /* Tiling_window_managerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tiling_window_managerTests.swift; sourceTree = "<group>"; };
+		F2478470219EDEF300F2B10D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2478475219EDEF300F2B10D /* Tiling window managerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tiling window managerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2478479219EDEF300F2B10D /* Tiling_window_managerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tiling_window_managerUITests.swift; sourceTree = "<group>"; };
+		F247847B219EDEF300F2B10D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F40EAA6E85BDC5F2A5150E76 /* Pods-Tiling window manager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiling window manager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tiling window manager/Pods-Tiling window manager.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F2478455219EDEF000F2B10D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				820D9EFCFE19EBB2510CC653 /* Pods_Tiling_window_manager.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2478467219EDEF300F2B10D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2478472219EDEF300F2B10D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ACEA2B8C2D0E855A614BCE74 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F40EAA6E85BDC5F2A5150E76 /* Pods-Tiling window manager.debug.xcconfig */,
+				1B419A6FC684783B534E1AA0 /* Pods-Tiling window manager.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F247844F219EDEF000F2B10D = {
+			isa = PBXGroup;
+			children = (
+				F247845A219EDEF000F2B10D /* Tiling window manager */,
+				F247846D219EDEF300F2B10D /* Tiling window managerTests */,
+				F2478478219EDEF300F2B10D /* Tiling window managerUITests */,
+				F2478459219EDEF000F2B10D /* Products */,
+				ACEA2B8C2D0E855A614BCE74 /* Pods */,
+				FC42242F8B89CD2D7507FE83 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F2478459219EDEF000F2B10D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2478458219EDEF000F2B10D /* Tiling window manager.app */,
+				F247846A219EDEF300F2B10D /* Tiling window managerTests.xctest */,
+				F2478475219EDEF300F2B10D /* Tiling window managerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F247845A219EDEF000F2B10D /* Tiling window manager */ = {
+			isa = PBXGroup;
+			children = (
+				F247845B219EDEF000F2B10D /* AppDelegate.swift */,
+				F247845D219EDEF000F2B10D /* ViewController.swift */,
+				F247845F219EDEF200F2B10D /* Assets.xcassets */,
+				F2478461219EDEF300F2B10D /* Main.storyboard */,
+				F2478464219EDEF300F2B10D /* Info.plist */,
+				F2478465219EDEF300F2B10D /* Tiling_window_manager.entitlements */,
+			);
+			path = "Tiling window manager";
+			sourceTree = "<group>";
+		};
+		F247846D219EDEF300F2B10D /* Tiling window managerTests */ = {
+			isa = PBXGroup;
+			children = (
+				F247846E219EDEF300F2B10D /* Tiling_window_managerTests.swift */,
+				F2478470219EDEF300F2B10D /* Info.plist */,
+			);
+			path = "Tiling window managerTests";
+			sourceTree = "<group>";
+		};
+		F2478478219EDEF300F2B10D /* Tiling window managerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F2478479219EDEF300F2B10D /* Tiling_window_managerUITests.swift */,
+				F247847B219EDEF300F2B10D /* Info.plist */,
+			);
+			path = "Tiling window managerUITests";
+			sourceTree = "<group>";
+		};
+		FC42242F8B89CD2D7507FE83 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E4914BD681AA7B40621C47F /* Pods_Tiling_window_manager.framework */,
+				A96F634E0413FA06A2E9B815 /* Pods_Tiling_window_managerTests.framework */,
+				C90A9D8E4A10850129D9D24A /* Pods_Tiling_window_managerUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F2478457219EDEF000F2B10D /* Tiling window manager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F247847E219EDEF300F2B10D /* Build configuration list for PBXNativeTarget "Tiling window manager" */;
+			buildPhases = (
+				950BDE7FD3D18D056693F4FD /* [CP] Check Pods Manifest.lock */,
+				F2478454219EDEF000F2B10D /* Sources */,
+				F2478455219EDEF000F2B10D /* Frameworks */,
+				F2478456219EDEF000F2B10D /* Resources */,
+				8B77F163D9DB8B8E753052C8 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Tiling window manager";
+			productName = "Tiling window manager";
+			productReference = F2478458219EDEF000F2B10D /* Tiling window manager.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F2478469219EDEF300F2B10D /* Tiling window managerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2478481219EDEF300F2B10D /* Build configuration list for PBXNativeTarget "Tiling window managerTests" */;
+			buildPhases = (
+				F2478466219EDEF300F2B10D /* Sources */,
+				F2478467219EDEF300F2B10D /* Frameworks */,
+				F2478468219EDEF300F2B10D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F247846C219EDEF300F2B10D /* PBXTargetDependency */,
+			);
+			name = "Tiling window managerTests";
+			productName = "Tiling window managerTests";
+			productReference = F247846A219EDEF300F2B10D /* Tiling window managerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F2478474219EDEF300F2B10D /* Tiling window managerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2478484219EDEF300F2B10D /* Build configuration list for PBXNativeTarget "Tiling window managerUITests" */;
+			buildPhases = (
+				F2478471219EDEF300F2B10D /* Sources */,
+				F2478472219EDEF300F2B10D /* Frameworks */,
+				F2478473219EDEF300F2B10D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F2478477219EDEF300F2B10D /* PBXTargetDependency */,
+			);
+			name = "Tiling window managerUITests";
+			productName = "Tiling window managerUITests";
+			productReference = F2478475219EDEF300F2B10D /* Tiling window managerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F2478450219EDEF000F2B10D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Kari Kammonen";
+				TargetAttributes = {
+					F2478457219EDEF000F2B10D = {
+						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+					F2478469219EDEF300F2B10D = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = F2478457219EDEF000F2B10D;
+					};
+					F2478474219EDEF300F2B10D = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = F2478457219EDEF000F2B10D;
+					};
+				};
+			};
+			buildConfigurationList = F2478453219EDEF000F2B10D /* Build configuration list for PBXProject "Tiling window manager" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F247844F219EDEF000F2B10D;
+			productRefGroup = F2478459219EDEF000F2B10D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F2478457219EDEF000F2B10D /* Tiling window manager */,
+				F2478469219EDEF300F2B10D /* Tiling window managerTests */,
+				F2478474219EDEF300F2B10D /* Tiling window managerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F2478456219EDEF000F2B10D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2478460219EDEF200F2B10D /* Assets.xcassets in Resources */,
+				F2478463219EDEF300F2B10D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2478468219EDEF300F2B10D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2478473219EDEF300F2B10D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8B77F163D9DB8B8E753052C8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tiling window manager/Pods-Tiling window manager-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AXSwift/AXSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Swindler/Swindler.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AXSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swindler.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tiling window manager/Pods-Tiling window manager-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		950BDE7FD3D18D056693F4FD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tiling window manager-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F2478454219EDEF000F2B10D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F247845E219EDEF000F2B10D /* ViewController.swift in Sources */,
+				F247845C219EDEF000F2B10D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2478466219EDEF300F2B10D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F247846F219EDEF300F2B10D /* Tiling_window_managerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2478471219EDEF300F2B10D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F247847A219EDEF300F2B10D /* Tiling_window_managerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F247846C219EDEF300F2B10D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2478457219EDEF000F2B10D /* Tiling window manager */;
+			targetProxy = F247846B219EDEF300F2B10D /* PBXContainerItemProxy */;
+		};
+		F2478477219EDEF300F2B10D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2478457219EDEF000F2B10D /* Tiling window manager */;
+			targetProxy = F2478476219EDEF300F2B10D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F2478461219EDEF300F2B10D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2478462219EDEF300F2B10D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F247847C219EDEF300F2B10D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F247847D219EDEF300F2B10D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		F247847F219EDEF300F2B10D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F40EAA6E85BDC5F2A5150E76 /* Pods-Tiling window manager.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Tiling window manager/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kkammone.Tiling-window-manager";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		F2478480219EDEF300F2B10D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B419A6FC684783B534E1AA0 /* Pods-Tiling window manager.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Tiling window manager/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kkammone.Tiling-window-manager";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		F2478482219EDEF300F2B10D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Tiling window managerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kkammone.Tiling-window-managerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tiling window manager.app/Contents/MacOS/Tiling window manager";
+			};
+			name = Debug;
+		};
+		F2478483219EDEF300F2B10D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Tiling window managerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kkammone.Tiling-window-managerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tiling window manager.app/Contents/MacOS/Tiling window manager";
+			};
+			name = Release;
+		};
+		F2478485219EDEF300F2B10D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Tiling window managerUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kkammone.Tiling-window-managerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_TARGET_NAME = "Tiling window manager";
+			};
+			name = Debug;
+		};
+		F2478486219EDEF300F2B10D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Tiling window managerUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kkammone.Tiling-window-managerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_TARGET_NAME = "Tiling window manager";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F2478453219EDEF000F2B10D /* Build configuration list for PBXProject "Tiling window manager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F247847C219EDEF300F2B10D /* Debug */,
+				F247847D219EDEF300F2B10D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F247847E219EDEF300F2B10D /* Build configuration list for PBXNativeTarget "Tiling window manager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F247847F219EDEF300F2B10D /* Debug */,
+				F2478480219EDEF300F2B10D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2478481219EDEF300F2B10D /* Build configuration list for PBXNativeTarget "Tiling window managerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2478482219EDEF300F2B10D /* Debug */,
+				F2478483219EDEF300F2B10D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2478484219EDEF300F2B10D /* Build configuration list for PBXNativeTarget "Tiling window managerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2478485219EDEF300F2B10D /* Debug */,
+				F2478486219EDEF300F2B10D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F2478450219EDEF000F2B10D /* Project object */;
+}

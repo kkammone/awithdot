@@ -1,0 +1,47 @@
+PODS:
+  - AXSwift (0.2.2)
+  - PromiseKit (4.4.0):
+    - PromiseKit/Foundation (= 4.4.0)
+    - PromiseKit/QuartzCore (= 4.4.0)
+    - PromiseKit/UIKit (= 4.4.0)
+  - PromiseKit/CorePromise (4.4.0)
+  - PromiseKit/Foundation (4.4.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/QuartzCore (4.4.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (4.4.0):
+    - PromiseKit/CorePromise
+  - SwiftLint (0.28.0)
+  - Swindler (0.0.1):
+    - AXSwift (= 0.2.2)
+    - PromiseKit (= 4.4.0)
+
+DEPENDENCIES:
+  - SwiftLint (~> 0.27)
+  - Swindler (from `https://github.com/tmandry/Swindler.git`, commit `master`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AXSwift
+    - PromiseKit
+    - SwiftLint
+
+EXTERNAL SOURCES:
+  Swindler:
+    :commit: master
+    :git: https://github.com/tmandry/Swindler.git
+
+CHECKOUT OPTIONS:
+  Swindler:
+    :commit: master
+    :git: https://github.com/tmandry/Swindler.git
+
+SPEC CHECKSUMS:
+  AXSwift: 495d2ae44b4351f98b94c63337d69989fa4a7978
+  PromiseKit: ecf5fe92275d57ee77c9ede858af47a162e9b97e
+  SwiftLint: 088cfacb75b45970017e62b7524d506776d60148
+  Swindler: e6542328dd440810ea73829fbb41da1105a58d70
+
+PODFILE CHECKSUM: 8422625a8a80e8a018f278f797fa9de80f5654d6
+
+COCOAPODS: 1.6.0.beta.2
