@@ -18,7 +18,7 @@ PODS:
 
 DEPENDENCIES:
   - SwiftLint (~> 0.27)
-  - Swindler (from `https://github.com/tmandry/Swindler.git`, commit `master`)
+  - Swindler (from `https://github.com/tmandry/Swindler.git`, commit `a54dc3ff55e850346ad9867f178ea5d0aa6fa1e3`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -28,12 +28,12 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   Swindler:
-    :commit: master
+    :commit: a54dc3ff55e850346ad9867f178ea5d0aa6fa1e3
     :git: https://github.com/tmandry/Swindler.git
 
 CHECKOUT OPTIONS:
   Swindler:
-    :commit: master
+    :commit: a54dc3ff55e850346ad9867f178ea5d0aa6fa1e3
     :git: https://github.com/tmandry/Swindler.git
 
 SPEC CHECKSUMS:
@@ -42,6 +42,6 @@ SPEC CHECKSUMS:
   SwiftLint: 088cfacb75b45970017e62b7524d506776d60148
   Swindler: e6542328dd440810ea73829fbb41da1105a58d70
 
-PODFILE CHECKSUM: 8422625a8a80e8a018f278f797fa9de80f5654d6
+PODFILE CHECKSUM: 49358d88b32f20933592055c22e28f8a58771a9f
 
 COCOAPODS: 1.6.0.beta.2

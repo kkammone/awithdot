@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		820D9EFCFE19EBB2510CC653 /* Pods_Tiling_window_manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E4914BD681AA7B40621C47F /* Pods_Tiling_window_manager.framework */; };
+		F221A48421A1EC3A00CB24D7 /* debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F221A48321A1EC3A00CB24D7 /* debouncer.swift */; };
 		F247845C219EDEF000F2B10D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247845B219EDEF000F2B10D /* AppDelegate.swift */; };
 		F247845E219EDEF000F2B10D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247845D219EDEF000F2B10D /* ViewController.swift */; };
 		F2478460219EDEF200F2B10D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F247845F219EDEF200F2B10D /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		5E4914BD681AA7B40621C47F /* Pods_Tiling_window_manager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiling_window_manager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A96F634E0413FA06A2E9B815 /* Pods_Tiling_window_managerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiling_window_managerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90A9D8E4A10850129D9D24A /* Pods_Tiling_window_managerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiling_window_managerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F221A48321A1EC3A00CB24D7 /* debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = debouncer.swift; sourceTree = "<group>"; };
 		F2478458219EDEF000F2B10D /* Tiling window manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tiling window manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F247845B219EDEF000F2B10D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F247845D219EDEF000F2B10D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				F2478461219EDEF300F2B10D /* Main.storyboard */,
 				F2478464219EDEF300F2B10D /* Info.plist */,
 				F2478465219EDEF300F2B10D /* Tiling_window_manager.entitlements */,
+				F221A48321A1EC3A00CB24D7 /* debouncer.swift */,
 			);
 			path = "Tiling window manager";
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 			files = (
 				F247845E219EDEF000F2B10D /* ViewController.swift in Sources */,
 				F247845C219EDEF000F2B10D /* AppDelegate.swift in Sources */,
+				F221A48421A1EC3A00CB24D7 /* debouncer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,7 +519,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "kkammone.Tiling-window-manager";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kkammone.awithdot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -533,7 +537,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "kkammone.Tiling-window-manager";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kkammone.awithdot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};

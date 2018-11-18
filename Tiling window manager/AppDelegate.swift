@@ -14,10 +14,10 @@ import PromiseKit
 
 struct Constants {
     static let LIMIT_TRACKED_APPLICATIONS = 25
+    static let MAGIC_KEY = "å"
     static let DO_NOT_TRACK_APPS = [
-    "iterm", "Xcode", "kkammone"
+    "iterm", "kkammone"
     ]
-
 }
 
 @NSApplicationMain
@@ -41,7 +41,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func initialize() {
         self.accessibilityCheck()
         self.listenKeypresses()
-        //self.printWindows()
         self.initSwindle()
     }
     
@@ -58,20 +57,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print("===PASSED AXIsProcessTrustedWithOptions, Listening keypresses, monitoring windows")
     }
     
- /*
-    func getWindows() -> [[String : Any]]{
-        let options = CGWindowListOption(arrayLiteral: .excludeDesktopElements, .optionOnScreenOnly)
-        let windowsListInfo = CGWindowListCopyWindowInfo(options, CGWindowID(0))
-        let infoList = windowsListInfo as! [[String:Any]]
-        return infoList.filter{ $0["kCGWindowLayer"] as! Int == 0 }
-    }
-    
-    func printWindows() {
-        print("===ACTIVE: LISTING WINDOWS===")
-        print(getWindows())
-    }
-   */
-    
     func listenKeypresses() {
         print("Listening keypresses......")
         let opts = NSDictionary(object: kCFBooleanTrue, forKey: kAXTrustedCheckOptionPrompt.takeUnretainedValue() as NSString) as CFDictionary
@@ -79,7 +64,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func keypress(event: NSEvent) {
-        if(event.type == NSEvent.EventType.keyDown && event.characters == "å" ) {
+        if(event.type == NSEvent.EventType.keyDown && event.characters == Constants.MAGIC_KEY) {
             self.adjustSizing()
            //NSApp.activate(ignoringOtherApps: true)
         }
@@ -90,7 +75,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if(self.sizingStrategy != "sizingStrategy4" ) {
             print("Choosing sizingStrategy4")
             self.sizingStrategy4(xRes: self.swindler.screens.first!.frame.maxX,
-                                 yRes: self.swindler.screens.first!.frame.maxY,
+                                 yRes: self.swindlerååå.screens.first!.frame.maxY,
                                  windows: getRecentWindowsList())
         } else {
             print("Choosing sizingStrategyLatestMax")
@@ -100,7 +85,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
        
-    
+    let debouncedFunction = Debouncer(delay: 0.3)
+
     func initSwindle() {
         Swindler.initialize().then { (swindler) -> Void in
             self.swindler = swindler
@@ -111,7 +97,45 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     self.addWindowToRecentsList(value: ((event.newValue?.focusedWindow.value)!))
                 }
             }
+            swindler.on { (event: WindowPosChangedEvent) in
+                guard event.external == true else {
+                    return
+                }
+                print("WINDOW MOVE EVENT ")
+                print(event)
+                self.debouncedFunction.setCallback {
+                    print("DEBOUNCED EVENT")
+                    self.snapToGrid(event: event) //TODO DEBOUNCE THIS
+                }
+            }
         }
+    }
+    
+    
+    func snapToGrid(event: WindowPosChangedEvent) {
+        let snapped = closestGridPosition(event: event)
+        if(snapped != nil)  {
+            event.window.position.set(snapped!.origin)
+            event.window.size.set(snapped!.size)
+        }
+    }
+    
+    /*
+     Two snap positions, top left 20% and top right 20%
+     */
+    func closestGridPosition(event: WindowPosChangedEvent) -> NSRect?{
+        let Y_MATCH_MULTIPLIER = CGFloat(0.1)
+        let point = event.newValue
+        let xRes = self.swindler.screens.first!.frame.maxX
+        let yRes = self.swindler.screens.first!.frame.maxY
+        if(point.y <  yRes*Y_MATCH_MULTIPLIER) {
+            if(point.x < (xRes/2) ){
+                return CGRect(x: 0, y: 0, width: xRes/2, height: yRes)
+            } else if(point.x > (xRes/2)) {
+                return CGRect(x: xRes/2, y: 0, width: xRes/2, height: yRes)
+            }
+        }
+      return nil
     }
     
     func getRecentWindowsList() -> [Swindler.Window] {
@@ -134,22 +158,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 break;
             }
         }
+        print("new active application")
+        print(value.application.description)
         if(!notTracked) {
-            print("new active application")
-            print(value.application.description)
+            print("tracked app, adding to list")
             self.windows.append(value)
             print("Active window list changed:")
             for w in self.windows {
                 print(w.application.description)
             }
+        } else {
+            print("NOT tracked app, IGNORING")
+
         }
     }
+    
     func sizingStrategyLatestMax(xRes:CGFloat, yRes:CGFloat, windows: [Swindler.Window])  {
         self.sizingStrategy = "sizingStrategyLatestMax"
           for (index,window) in windows.enumerated() {
               if(index == 0){
-                window.size.set(CGSize(width: xRes, height: yRes))
+                //window.frame.set(CGRect(x: 0, y: 0, width: xRes, height: yRes))
                 window.position.set(CGPoint(x: 0, y: 0))
+                window.size.set(CGSize(width: xRes, height: yRes))
                 window.isMinimized.set(false)
               } else {
                 window.isMinimized.set(true)
@@ -159,21 +189,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func sizingStrategy4(xRes:CGFloat, yRes:CGFloat, windows: [Swindler.Window]) {
         self.sizingStrategy = "sizingStrategy4"
-         //print("SITTEN resu ja POW!!:\(xRes) x \(yRes)")
-        // print(windows)
         for (index,window) in windows.enumerated() {
-            //let title = window.title.value
-            //print("resizing \(title)")
             if(index == 0){
-               // print("EKA!")
-                window.size.set(CGSize(width: xRes/2, height: yRes))
+               // window.frame.set(CGRect(x: 0, y: 0, width: xRes/2, height: yRes))
                 window.position.set(CGPoint(x: 0, y: 0))
+                window.size.set(CGSize(width: xRes/2, height: yRes))
                 window.isMinimized.set(false)
-                win
             } else if(index < 4) {
-                //print("SITTEN INDEX:\(index)")
-                window.size.set(CGSize(width: xRes/2, height: yRes/3))
+                //window.frame.set(CGRect(x: xRes/2, y: (CGFloat(index-1)*(yRes/3.0)), width: xRes/2, height:  yRes/3))
                 window.position.set(CGPoint(x: xRes/2, y: (CGFloat(index-1)*(yRes/3.0))))
+                window.size.set(CGSize(width: xRes/2, height:  yRes/3))
                 window.isMinimized.set(false)
             } else {
                window.isMinimized.set(true)
@@ -181,3 +206,4 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 }
+
