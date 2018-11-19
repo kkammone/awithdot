@@ -27,12 +27,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var swindler: Swindler.State!
     var sizingStrategy = ""
 
+    var statusItem = NSStatusBar.system.statusItem(withLength: -1)
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         self.intializeGraphics()
         self.initialize()
     }
     func intializeGraphics() {
         NSApp.setActivationPolicy(.accessory)
+        
+        // Make a status bar that has variable length (as opposed to being a standard square size)
+        // -1 to indicate "variable length"
+        
+        // Set the text that appears in the menu bar
+        self.statusItem.title = Constants.MAGIC_KEY
+        self.statusItem.image = NSImage(named:NSImage.enterFullScreenTemplateName)
+        
+        self.statusItem.image?.size = NSSize(width: 20, height: 18)
+        self.statusItem.length = 70
+        // image should be set as tempate so that it changes when the user sets the menu bar to a dark theme
+        self.statusItem.image?.isTemplate = true
+        
+        // Set the menu that should appear when the item is clicked
+        //self.statusItem.menu = self.menu
+        
+        // Set if the item should change color when clicked
+        self.statusItem.highlightMode = true
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -43,6 +63,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.listenKeypresses()
         self.initSwindle()
     }
+    
+    /*
+    func initializeUi() {
+        NSApp.setActivationPolicy(.accessory)
+        
+     
+    }*/
     
     func accessibilityCheck() {
         print("===BE AWARE! THIS APPLICATION IS BASICALLY A KEY LOGGER. ALWAYS EVALUATE CODE BEFORE RUNNING===")
@@ -75,7 +102,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if(self.sizingStrategy != "sizingStrategy4" ) {
             print("Choosing sizingStrategy4")
             self.sizingStrategy4(xRes: self.swindler.screens.first!.frame.maxX,
-                                 yRes: self.swindlerååå.screens.first!.frame.maxY,
+                                 yRes: self.swindler.screens.first!.frame.maxY,
                                  windows: getRecentWindowsList())
         } else {
             print("Choosing sizingStrategyLatestMax")
