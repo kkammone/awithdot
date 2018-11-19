@@ -15,6 +15,7 @@ import PromiseKit
 struct Constants {
     static let LIMIT_TRACKED_APPLICATIONS = 25
     static let MAGIC_KEY = "å"
+    static let INACTIVE_TEXT = "N/A"
     static let DO_NOT_TRACK_APPS = [
     "iterm", "kkammone"
     ]
@@ -33,26 +34,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.intializeGraphics()
         self.initialize()
     }
+    
     func intializeGraphics() {
         NSApp.setActivationPolicy(.accessory)
-        
-        // Make a status bar that has variable length (as opposed to being a standard square size)
-        // -1 to indicate "variable length"
-        
-        // Set the text that appears in the menu bar
-        self.statusItem.title = Constants.MAGIC_KEY
+        self.statusItem.title = Constants.INACTIVE_TEXT
         self.statusItem.image = NSImage(named:NSImage.enterFullScreenTemplateName)
-        
-        self.statusItem.image?.size = NSSize(width: 20, height: 18)
+        self.statusItem.image?.size = NSSize(width: 18, height: 18)
         self.statusItem.length = 70
-        // image should be set as tempate so that it changes when the user sets the menu bar to a dark theme
         self.statusItem.image?.isTemplate = true
-        
-        // Set the menu that should appear when the item is clicked
-        //self.statusItem.menu = self.menu
-        
-        // Set if the item should change color when clicked
         self.statusItem.highlightMode = true
+
+        let menu = NSMenu()
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        self.statusItem.menu = menu
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -64,13 +59,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.initSwindle()
     }
     
-    /*
-    func initializeUi() {
-        NSApp.setActivationPolicy(.accessory)
-        
-     
-    }*/
-    
     func accessibilityCheck() {
         print("===BE AWARE! THIS APPLICATION IS BASICALLY A KEY LOGGER. ALWAYS EVALUATE CODE BEFORE RUNNING===")
         print("===This application has to be accessibility trusted, checking...")
@@ -78,9 +66,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             print("Not trusted as an AX process; please authorize and re-launch")
             print("FAILED AXIsProcessTrustedWithOptions, which means that you are either running in app sandbox in xcode")
             print("or you haven't enabled accessibility setting for this application")
-           // NSApp.terminate(self)
             return
         }
+        self.statusItem.title = Constants.MAGIC_KEY
         print("===PASSED AXIsProcessTrustedWithOptions, Listening keypresses, monitoring windows")
     }
     
@@ -118,8 +106,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         Swindler.initialize().then { (swindler) -> Void in
             self.swindler = swindler
             swindler.on { (event: FrontmostApplicationChangedEvent) in
-               // print("new frontmost app: \(event.newValue?.bundleIdentifier ?? ååå"unknown").",
-               //     "[old: \(event.oldValue?.bundleIdentifier ?? "unknown")]")
                 if(event.newValue != nil && event.newValue?.focusedWindow.value != nil) {
                     self.addWindowToRecentsList(value: ((event.newValue?.focusedWindow.value)!))
                 }
@@ -132,12 +118,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 print(event)
                 self.debouncedFunction.setCallback {
                     print("DEBOUNCED EVENT")
-                    self.snapToGrid(event: event) //TODO DEBOUNCE THIS
+                    self.snapToGrid(event: event)
                 }
             }
         }
     }
-    
     
     func snapToGrid(event: WindowPosChangedEvent) {
         let snapped = closestGridPosition(event: event)
@@ -146,10 +131,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             event.window.size.set(snapped!.size)
         }
     }
-    
-    /*
-     Two snap positions, top left 20% and top right 20%
-     */
+
     func closestGridPosition(event: WindowPosChangedEvent) -> NSRect?{
         let Y_MATCH_MULTIPLIER = CGFloat(0.1)
         let point = event.newValue
