@@ -1,4 +1,3 @@
-// file: Debouncer.swift
 import Foundation
 
 class Debouncer: NSObject {

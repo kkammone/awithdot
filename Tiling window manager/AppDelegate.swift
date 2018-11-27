@@ -13,7 +13,7 @@ import Swindler
 import PromiseKit
 
 struct Constants {
-    static let LIMIT_TRACKED_APPLICATIONS = 25
+    static let LIMIT_TRACKED_APPLICATIONS = 100
     static let MAGIC_KEY = "å"
     static let INACTIVE_TEXT = "N/A"
     static let DO_NOT_TRACK_APPS = [
@@ -21,33 +21,76 @@ struct Constants {
     ]
 }
 
-@NSApplicationMain
+class Strategy :NSObject {
+    var text: String
+    var strategy: String
+    var keyEquivalent:String
+    var function: (CGFloat, CGFloat, [Window]) -> ()
+    init(text:String, strategy:String, function:@escaping (CGFloat, CGFloat, [Window]) -> (), keyEquivalent: String) {
+        self.text=text
+        self.strategy = strategy
+        self.function = function
+        self.keyEquivalent = keyEquivalent
+    }
+}
+
+@NSApplicationMain //
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var windows: [Swindler.Window] = []
     var swindler: Swindler.State!
-    var sizingStrategy = ""
-
+    var sizingStrategyAlternated = false
+    var sizingStrategy: String = "sizingStrategy4"
+    var sizingStrategies : [String : Strategy] = [
+        "sizingStrategy2" : Strategy(text:"1+1 windows", strategy:"sizingStrategy2",  function: sizingStrategy2, keyEquivalent:"2"),
+        "sizingStrategy4" : Strategy(text:"1+3 windows", strategy:"sizingStrategy4",  function: sizingStrategy4, keyEquivalent:"4")
+    ]
+    
     var statusItem = NSStatusBar.system.statusItem(withLength: -1)
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        self.intializeGraphics()
+        NSApp.setActivationPolicy(.accessory)
+
+        self.intializeMenu()
         self.initialize()
     }
     
-    func intializeGraphics() {
-        NSApp.setActivationPolicy(.accessory)
+    func intializeMenu() {
         self.statusItem.title = Constants.INACTIVE_TEXT
         self.statusItem.image = NSImage(named:NSImage.enterFullScreenTemplateName)
         self.statusItem.image?.size = NSSize(width: 18, height: 18)
-        self.statusItem.length = 70
+        self.statusItem.length = 50
         self.statusItem.image?.isTemplate = true
         self.statusItem.highlightMode = true
 
         let menu = NSMenu()
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        
+        for(key, value) in self.sizingStrategies {
+            let item = createMenuItem(title: value.text, keyEquivalent: value.keyEquivalent, strategy: value.strategy)
+            item.state = value.strategy == self.sizingStrategy ? NSControl.StateValue.on : NSControl.StateValue.off
+            menu.addItem(item)
+        }
         self.statusItem.menu = menu
+    }
+    func createMenuItem(title: String, keyEquivalent: String, strategy:String) -> NSMenuItem {
+        let item =  NSMenuItem()
+        item.title = title
+        item.keyEquivalent = keyEquivalent
+        item.action = #selector(changeStrategy(_:))
+        item.representedObject = strategy
+        return item
+    }
+    @objc func changeStrategy(_ sender: NSMenuItem) {
+        for i in statusItem.menu!.items {
+            i.state = NSControl.StateValue.off
+        }
+        print("setting on")
+        sender.state = NSControl.StateValue.on
+        print(sender.state)
+        self.sizingStrategy = sender.representedObject as! String
+        print(self.sizingStrategy)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -86,15 +129,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func adjustSizing() {
+        self.sizingStrategyAlternated = !self.sizingStrategyAlternated
         print("adjustSizing")
-        if(self.sizingStrategy != "sizingStrategy4" ) {
+        if(self.sizingStrategyAlternated) {
             print("Choosing sizingStrategy4")
-            self.sizingStrategy4(xRes: self.swindler.screens.first!.frame.maxX,
-                                 yRes: self.swindler.screens.first!.frame.maxY,
-                                 windows: getRecentWindowsList())
+            self.sizingStrategies[self.sizingStrategy]!.function( self.swindler.screens.first!.frame.maxX,
+                                  self.swindler.screens.first!.frame.maxY,
+                                  getRecentWindowsList())
         } else {
             print("Choosing sizingStrategyLatestMax")
-            self.sizingStrategyLatestMax(xRes: self.swindler.screens.first!.frame.maxX,
+            sizingStrategyLatestMax(xRes: self.swindler.screens.first!.frame.maxX,
                                  yRes: self.swindler.screens.first!.frame.maxY,
                                  windows: getRecentWindowsList())
         }
@@ -182,37 +226,54 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func sizingStrategyLatestMax(xRes:CGFloat, yRes:CGFloat, windows: [Swindler.Window])  {
-        self.sizingStrategy = "sizingStrategyLatestMax"
-          for (index,window) in windows.enumerated() {
-              if(index == 0){
-                //window.frame.set(CGRect(x: 0, y: 0, width: xRes, height: yRes))
-                window.position.set(CGPoint(x: 0, y: 0))
-                window.size.set(CGSize(width: xRes, height: yRes))
-                window.isMinimized.set(false)
-              } else {
-                window.isMinimized.set(true)
-            }
-        }
-    }
-    
-    func sizingStrategy4(xRes:CGFloat, yRes:CGFloat, windows: [Swindler.Window]) {
-        self.sizingStrategy = "sizingStrategy4"
-        for (index,window) in windows.enumerated() {
-            if(index == 0){
-               // window.frame.set(CGRect(x: 0, y: 0, width: xRes/2, height: yRes))
-                window.position.set(CGPoint(x: 0, y: 0))
-                window.size.set(CGSize(width: xRes/2, height: yRes))
-                window.isMinimized.set(false)
-            } else if(index < 4) {
-                //window.frame.set(CGRect(x: xRes/2, y: (CGFloat(index-1)*(yRes/3.0)), width: xRes/2, height:  yRes/3))
-                window.position.set(CGPoint(x: xRes/2, y: (CGFloat(index-1)*(yRes/3.0))))
-                window.size.set(CGSize(width: xRes/2, height:  yRes/3))
-                window.isMinimized.set(false)
-            } else {
-               window.isMinimized.set(true)
-            }
+   
+
+}
+
+func sizingStrategyLatestMax(xRes:CGFloat, yRes:CGFloat, windows: [Swindler.Window])  {
+    for (index,window) in windows.enumerated() {
+        if(index == 0){
+            //window.frame.set(CGRect(x: 0, y: 0, width: xRes, height: yRes))
+            window.position.set(CGPoint(x: 0, y: 0))
+            window.size.set(CGSize(width: xRes, height: yRes))
+            window.isMinimized.set(false)
+        } else {
+            window.isMinimized.set(true)
         }
     }
 }
 
+func sizingStrategy4(xRes:CGFloat, yRes:CGFloat, windows: [Swindler.Window]) {
+    for (index,window) in windows.enumerated() {
+        if(index == 0){
+            // window.frame.set(CGRect(x: 0, y: 0, width: xRes/2, height: yRes))
+            window.position.set(CGPoint(x: 0, y: 0))
+            window.size.set(CGSize(width: xRes/2, height: yRes))
+            window.isMinimized.set(false)
+        } else if(index < 4) {
+            //window.frame.set(CGRect(x: xRes/2, y: (CGFloat(index-1)*(yRes/3.0)), width: xRes/2, height:  yRes/3))
+            window.position.set(CGPoint(x: xRes/2, y: (CGFloat(index-1)*(yRes/3.0))))
+            window.size.set(CGSize(width: xRes/2, height:  yRes/3))
+            window.isMinimized.set(false)
+        } else {
+            window.isMinimized.set(true)
+        }
+    }
+}
+func sizingStrategy2(xRes:CGFloat, yRes:CGFloat, windows: [Swindler.Window]) {
+    for (index,window) in windows.enumerated() {
+        if(index == 0){
+            // window.frame.set(CGRect(x: 0, y: 0, width: xRes/2, height: yRes))
+            window.position.set(CGPoint(x: 0, y: 0))
+            window.size.set(CGSize(width: xRes/2, height: yRes))
+            window.isMinimized.set(false)
+        } else if(index <= 1) {
+            //window.frame.set(CGRect(x: xRes/2, y: (CGFloat(index-1)*(yRes/3.0)), width: xRes/2, height:  yRes/3))
+            window.position.set(CGPoint(x: xRes/2, y: 0))
+            window.size.set(CGSize(width: xRes/2, height:  yRes))
+            window.isMinimized.set(false)
+        } else {
+            window.isMinimized.set(true)
+        }
+    }
+}
