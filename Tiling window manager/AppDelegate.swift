@@ -43,6 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var sizingStrategy: String = "sizingStrategy4"
     var sizingStrategies : [String : Strategy] = [
         "sizingStrategy2" : Strategy(text:"1+1 windows", strategy:"sizingStrategy2",  function: sizingStrategy2, keyEquivalent:"2"),
+        "sizingStrategy3" : Strategy(text:"1+2 windows", strategy:"sizingStrategy3",  function: sizingStrategy3, keyEquivalent:"3"),
         "sizingStrategy4" : Strategy(text:"1+3 windows", strategy:"sizingStrategy4",  function: sizingStrategy4, keyEquivalent:"4")
     ]
     
@@ -252,8 +253,23 @@ func sizingStrategy4(xRes:CGFloat, yRes:CGFloat, windows: [Swindler.Window]) {
             window.isMinimized.set(false)
         } else if(index < 4) {
             //window.frame.set(CGRect(x: xRes/2, y: (CGFloat(index-1)*(yRes/3.0)), width: xRes/2, height:  yRes/3))
-            window.position.set(CGPoint(x: xRes/2, y: (CGFloat(index-1)*(yRes/3.0))))
+            window.position.set(CGPoint(x: xRes/2, y: (CGFloat(index-1)*(yRes/3))))
             window.size.set(CGSize(width: xRes/2, height:  yRes/3))
+            window.isMinimized.set(false)
+        } else {
+            window.isMinimized.set(true)
+        }
+    }
+}
+func sizingStrategy3(xRes:CGFloat, yRes:CGFloat, windows: [Swindler.Window]) {
+    for (index,window) in windows.enumerated() {
+        if(index == 0){
+            window.position.set(CGPoint(x: 0, y: 0))
+            window.size.set(CGSize(width: xRes/2, height: yRes))
+            window.isMinimized.set(false)
+        } else if(index < 3) {
+            window.position.set(CGPoint(x: xRes/2, y: (CGFloat(index-1)*(yRes/2))))
+            window.size.set(CGSize(width: xRes/2, height:  yRes/2))
             window.isMinimized.set(false)
         } else {
             window.isMinimized.set(true)
@@ -263,12 +279,10 @@ func sizingStrategy4(xRes:CGFloat, yRes:CGFloat, windows: [Swindler.Window]) {
 func sizingStrategy2(xRes:CGFloat, yRes:CGFloat, windows: [Swindler.Window]) {
     for (index,window) in windows.enumerated() {
         if(index == 0){
-            // window.frame.set(CGRect(x: 0, y: 0, width: xRes/2, height: yRes))
             window.position.set(CGPoint(x: 0, y: 0))
             window.size.set(CGSize(width: xRes/2, height: yRes))
             window.isMinimized.set(false)
         } else if(index <= 1) {
-            //window.frame.set(CGRect(x: xRes/2, y: (CGFloat(index-1)*(yRes/3.0)), width: xRes/2, height:  yRes/3))
             window.position.set(CGPoint(x: xRes/2, y: 0))
             window.size.set(CGSize(width: xRes/2, height:  yRes))
             window.isMinimized.set(false)

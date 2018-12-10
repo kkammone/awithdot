@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		820D9EFCFE19EBB2510CC653 /* Pods_Tiling_window_manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E4914BD681AA7B40621C47F /* Pods_Tiling_window_manager.framework */; };
 		F221A48421A1EC3A00CB24D7 /* debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F221A48321A1EC3A00CB24D7 /* debouncer.swift */; };
 		F247845C219EDEF000F2B10D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247845B219EDEF000F2B10D /* AppDelegate.swift */; };
 		F247845E219EDEF000F2B10D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247845D219EDEF000F2B10D /* ViewController.swift */; };
@@ -15,6 +14,9 @@
 		F2478463219EDEF300F2B10D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2478461219EDEF300F2B10D /* Main.storyboard */; };
 		F247846F219EDEF300F2B10D /* Tiling_window_managerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247846E219EDEF300F2B10D /* Tiling_window_managerTests.swift */; };
 		F247847A219EDEF300F2B10D /* Tiling_window_managerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2478479219EDEF300F2B10D /* Tiling_window_managerUITests.swift */; };
+		F25DF12221ADEBA80065DB94 /* Pods_Tiling_window_manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F25DF12021ADEB9C0065DB94 /* Pods_Tiling_window_manager.framework */; };
+		F25DF12321ADEBA80065DB94 /* Pods_Tiling_window_manager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F25DF12021ADEB9C0065DB94 /* Pods_Tiling_window_manager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F25DF12621ADF15A0065DB94 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F25DF12521ADF15A0065DB94 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +35,20 @@
 			remoteInfo = "Tiling window manager";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F25DF12421ADEBA80065DB94 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F25DF12321ADEBA80065DB94 /* Pods_Tiling_window_manager.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1B419A6FC684783B534E1AA0 /* Pods-Tiling window manager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiling window manager.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tiling window manager/Pods-Tiling window manager.release.xcconfig"; sourceTree = "<group>"; };
@@ -53,6 +69,14 @@
 		F2478475219EDEF300F2B10D /* Tiling window managerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tiling window managerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2478479219EDEF300F2B10D /* Tiling_window_managerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tiling_window_managerUITests.swift; sourceTree = "<group>"; };
 		F247847B219EDEF300F2B10D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F25DF10E21ADC71A0065DB94 /* AXSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AXSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F25DF11321ADC71A0065DB94 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F25DF11621ADC71A0065DB94 /* Swindler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Swindler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F25DF11A21ADD1B80065DB94 /* AXSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AXSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F25DF11C21ADD1BD0065DB94 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F25DF11E21ADD1BD0065DB94 /* Swindler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Swindler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F25DF12021ADEB9C0065DB94 /* Pods_Tiling_window_manager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Tiling_window_manager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F25DF12521ADF15A0065DB94 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F40EAA6E85BDC5F2A5150E76 /* Pods-Tiling window manager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiling window manager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tiling window manager/Pods-Tiling window manager.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,7 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				820D9EFCFE19EBB2510CC653 /* Pods_Tiling_window_manager.framework in Frameworks */,
+				F25DF12221ADEBA80065DB94 /* Pods_Tiling_window_manager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +118,9 @@
 		F247844F219EDEF000F2B10D = {
 			isa = PBXGroup;
 			children = (
+				F25DF11621ADC71A0065DB94 /* Swindler.framework */,
+				F25DF11321ADC71A0065DB94 /* PromiseKit.framework */,
+				F25DF10E21ADC71A0065DB94 /* AXSwift.framework */,
 				F247845A219EDEF000F2B10D /* Tiling window manager */,
 				F247846D219EDEF300F2B10D /* Tiling window managerTests */,
 				F2478478219EDEF300F2B10D /* Tiling window managerUITests */,
@@ -123,6 +150,7 @@
 				F2478464219EDEF300F2B10D /* Info.plist */,
 				F2478465219EDEF300F2B10D /* Tiling_window_manager.entitlements */,
 				F221A48321A1EC3A00CB24D7 /* debouncer.swift */,
+				F25DF12521ADF15A0065DB94 /* Images.xcassets */,
 			);
 			path = "Tiling window manager";
 			sourceTree = "<group>";
@@ -148,6 +176,10 @@
 		FC42242F8B89CD2D7507FE83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F25DF12021ADEB9C0065DB94 /* Pods_Tiling_window_manager.framework */,
+				F25DF11C21ADD1BD0065DB94 /* PromiseKit.framework */,
+				F25DF11E21ADD1BD0065DB94 /* Swindler.framework */,
+				F25DF11A21ADD1B80065DB94 /* AXSwift.framework */,
 				5E4914BD681AA7B40621C47F /* Pods_Tiling_window_manager.framework */,
 				A96F634E0413FA06A2E9B815 /* Pods_Tiling_window_managerTests.framework */,
 				C90A9D8E4A10850129D9D24A /* Pods_Tiling_window_managerUITests.framework */,
@@ -167,6 +199,7 @@
 				F2478455219EDEF000F2B10D /* Frameworks */,
 				F2478456219EDEF000F2B10D /* Resources */,
 				8B77F163D9DB8B8E753052C8 /* [CP] Embed Pods Frameworks */,
+				F25DF12421ADEBA80065DB94 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -266,6 +299,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F25DF12621ADF15A0065DB94 /* Images.xcassets in Resources */,
 				F2478460219EDEF200F2B10D /* Assets.xcassets in Resources */,
 				F2478463219EDEF300F2B10D /* Main.storyboard in Resources */,
 			);
@@ -511,7 +545,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F40EAA6E85BDC5F2A5150E76 /* Pods-Tiling window manager.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Tiling window manager/Info.plist";
@@ -529,7 +563,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1B419A6FC684783B534E1AA0 /* Pods-Tiling window manager.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Tiling window manager/Info.plist";
