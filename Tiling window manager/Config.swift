@@ -24,14 +24,14 @@ let defaultConfig = Config(LIMIT_TRACKED_APPLICATIONS: 100,
                                 "iterm", "kkammone"
                            ])
 
-var config = readConfig()
+var config = readConfig(defaultConfig: defaultConfig)
 
 func reloadConfig() {
     print("===RELOAD CONFIG")
-    config = readConfig()
+    config = readConfig(defaultConfig: defaultConfig)
 }
 
-func readConfig() -> Config{
+func readConfig(defaultConfig: Config) -> Config{
     do {
         let contents = try NSString(contentsOfFile: configPath, encoding: String.Encoding.utf8.rawValue).data(using: String.Encoding.utf8.rawValue)
         let config = try JSONDecoder().decode(Config.self, from: contents!)

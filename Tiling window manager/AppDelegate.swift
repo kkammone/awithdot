@@ -24,7 +24,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.setActivationPolicy(.accessory)
         self.intializeMenu()
         self.initialize()
-        readConfig()
     }
     
     func intializeMenu() {
