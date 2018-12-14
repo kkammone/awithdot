@@ -12,16 +12,9 @@ import AXSwift
 import Swindler
 import PromiseKit
 
-struct Constants {
-    static let LIMIT_TRACKED_APPLICATIONS = 100
-    static let MAGIC_KEY = "å"
-    static let INACTIVE_TEXT = "N/A"
-    static let DO_NOT_TRACK_APPS = [
-    "iterm", "kkammone"
-    ]
-}
 
-@NSApplicationMain 
+
+@NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var statusItem = NSStatusBar.system.statusItem(withLength: -1)
@@ -31,10 +24,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.setActivationPolicy(.accessory)
         self.intializeMenu()
         self.initialize()
+        readConfig()
     }
     
     func intializeMenu() {
-        self.statusItem.title = Constants.INACTIVE_TEXT
+        self.statusItem.title = config.INACTIVE_TEXT
         self.statusItem.image = NSImage(named:NSImage.enterFullScreenTemplateName)
         self.statusItem.image?.size = NSSize(width: 18, height: 18)
         self.statusItem.length = 50
@@ -44,7 +38,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let menu = NSMenu()
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-        
+        menu.addItem(NSMenuItem(title: "Edit config", action: #selector(editConfig(_:)), keyEquivalent: "e"))
+        menu.addItem(NSMenuItem(title: "Reload config", action: #selector(reloadConfig(_:)), keyEquivalent: "r"))
+
         for(key, value) in self.windowing.getSizingStrategies() {
             let item = createMenuItem(title: value.text, keyEquivalent: value.keyEquivalent, strategy: value.strategy)
             item.state = value.strategy == self.windowing.getSizingStrategy() ? NSControl.StateValue.on : NSControl.StateValue.off
@@ -60,6 +56,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         item.representedObject = strategy
         return item
     }
+    
+    //    open func openFile(_ fullPath: String, withApplication appName: String?) -> Bool
+
+    @objc func editConfig(_ sender: NSMenuItem) {
+        NSWorkspace.shared.openFile(configPath , withApplication: "/Applications/TextEdit.app")
+    }
+    
+    @objc func reloadConfig(_ sender: NSMenuItem) {
+        Tiling_window_manager.reloadConfig()
+    }
+    
     @objc func changeStrategy(_ sender: NSMenuItem) {
         for i in statusItem.menu!.items {
             i.state = NSControl.StateValue.off
@@ -87,7 +94,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             print("or you haven't enabled accessibility setting for this application")
             return
         }
-        self.statusItem.title = Constants.MAGIC_KEY
+        self.statusItem.title = config.MAGIC_KEY
         print("===PASSED AXIsProcessTrustedWithOptions, Listening keypresses, monitoring windows")
     }
     
@@ -98,7 +105,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func keypress(event: NSEvent) {
-        if(event.type == NSEvent.EventType.keyDown && event.characters == Constants.MAGIC_KEY) {
+        if(event.type == NSEvent.EventType.keyDown && event.characters == config.MAGIC_KEY) {
             self.windowing.adjustSizing()
            //NSApp.activate(ignoringOtherApps: true)
         }

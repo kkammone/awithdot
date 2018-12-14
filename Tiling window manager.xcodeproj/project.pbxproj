@@ -18,6 +18,7 @@
 		F25DF12321ADEBA80065DB94 /* Pods_Tiling_window_manager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F25DF12021ADEB9C0065DB94 /* Pods_Tiling_window_manager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F25DF12621ADF15A0065DB94 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F25DF12521ADF15A0065DB94 /* Images.xcassets */; };
 		F2FE9CE721BED1CC00A428A1 /* WindowUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FE9CE621BED1CC00A428A1 /* WindowUtils.swift */; };
+		F2FE9CE921C42F6000A428A1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FE9CE821C42F6000A428A1 /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		F25DF12021ADEB9C0065DB94 /* Pods_Tiling_window_manager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Tiling_window_manager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F25DF12521ADF15A0065DB94 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F2FE9CE621BED1CC00A428A1 /* WindowUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowUtils.swift; sourceTree = "<group>"; };
+		F2FE9CE821C42F6000A428A1 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		F40EAA6E85BDC5F2A5150E76 /* Pods-Tiling window manager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiling window manager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tiling window manager/Pods-Tiling window manager.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +156,7 @@
 				F221A48321A1EC3A00CB24D7 /* debouncer.swift */,
 				F25DF12521ADF15A0065DB94 /* Images.xcassets */,
 				F2FE9CE621BED1CC00A428A1 /* WindowUtils.swift */,
+				F2FE9CE821C42F6000A428A1 /* Config.swift */,
 			);
 			path = "Tiling window manager";
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 			files = (
 				F247845E219EDEF000F2B10D /* ViewController.swift in Sources */,
 				F2FE9CE721BED1CC00A428A1 /* WindowUtils.swift in Sources */,
+				F2FE9CE921C42F6000A428A1 /* Config.swift in Sources */,
 				F247845C219EDEF000F2B10D /* AppDelegate.swift in Sources */,
 				F221A48421A1EC3A00CB24D7 /* debouncer.swift in Sources */,
 			);

@@ -173,11 +173,11 @@ class Windowing: NSObject {
             //print("DOES CONTAIN!")
             self.windows.remove(at: index!)
         }
-        if(self.windows.count > Constants.LIMIT_TRACKED_APPLICATIONS) {
+        if(self.windows.count > config.LIMIT_TRACKED_APPLICATIONS) {
             self.windows.removeLast()
         }
         var notTracked = false
-        for notTrackStr in Constants.DO_NOT_TRACK_APPS {
+        for notTrackStr in config.DO_NOT_TRACK_APPS {
             if(value.application.description.contains(notTrackStr)){
                 notTracked = true
                 break;
