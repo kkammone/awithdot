@@ -1,6 +1,0 @@
-framework module Pods_Tiling_window_manager {
-  umbrella header "Pods-Tiling window manager-umbrella.h"
-
-  export *
-  module * { export * }
-}

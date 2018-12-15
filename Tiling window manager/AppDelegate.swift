@@ -14,7 +14,7 @@ import PromiseKit
 
 
 
-@NSApplicationMain
+@NSApplicationMain 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var statusItem = NSStatusBar.system.statusItem(withLength: -1)
@@ -63,7 +63,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @objc func reloadConfig(_ sender: NSMenuItem) {
-        Tiling_window_manager.reloadConfig()
+        awithdot.reloadConfig()
     }
     
     @objc func changeStrategy(_ sender: NSMenuItem) {

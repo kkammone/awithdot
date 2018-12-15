@@ -38,7 +38,7 @@ func readConfig(defaultConfig: Config) -> Config{
         print("read config:")
         print(config)
         return config
-    } catch let error as NSError { //file didn't exist, create a new one
+    } catch { //file didn't exist, create a new one
         print("Failed to read config, created a new one: " + configPath)
         do {
             let encoder = JSONEncoder()
@@ -47,7 +47,7 @@ func readConfig(defaultConfig: Config) -> Config{
             let jsonString = String(data: jsonData, encoding: .utf8)
             try jsonString?.write(to:URL(fileURLWithPath:configPath), atomically: true, encoding: String.Encoding.utf8)
             return defaultConfig
-        } catch let error as NSError {
+        } catch  {
             
         }
     }

@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Tiling window manager.xcodeproj">
+      location = "group:/Users/kkammone/work/Tiling window manager/awithdot.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

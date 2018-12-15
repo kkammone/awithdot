@@ -1,7 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 # platform :osx, '10.10'
 
-target 'Tiling window manager' do
+target 'awithdot' do
   use_frameworks!
  # 1e1d65fa272d863949279d3c82b00ab128bf2320 
   # Pods for Tiling window manager
