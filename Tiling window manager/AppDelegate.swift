@@ -12,8 +12,6 @@ import AXSwift
 import Swindler
 import PromiseKit
 
-
-
 @NSApplicationMain 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -47,6 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         self.statusItem.menu = menu
     }
+    
     func createMenuItem(title: String, keyEquivalent: String, strategy:String) -> NSMenuItem {
         let item =  NSMenuItem()
         item.title = title
@@ -56,10 +55,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return item
     }
     
-    //    open func openFile(_ fullPath: String, withApplication appName: String?) -> Bool
-
     @objc func editConfig(_ sender: NSMenuItem) {
-        NSWorkspace.shared.openFile(configPath , withApplication: "/Applications/TextEdit.app")
+        NSWorkspace.shared.openFile(configPath , withApplication: config.TEXT_EDITOR_PATH)
     }
     
     @objc func reloadConfig(_ sender: NSMenuItem) {

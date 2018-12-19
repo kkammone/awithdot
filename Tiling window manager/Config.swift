@@ -11,10 +11,11 @@ import Foundation
 let configPath = NSString(string: "~/.awithdot.config").expandingTildeInPath
 
 struct Config : Codable {
-    let LIMIT_TRACKED_APPLICATIONS :Int
+    let LIMIT_TRACKED_APPLICATIONS: Int
     let MAGIC_KEY :String
-    let INACTIVE_TEXT :String
-    let DO_NOT_TRACK_APPS :[String]
+    let INACTIVE_TEXT: String
+    let DO_NOT_TRACK_APPS: [String]
+    let TEXT_EDITOR_PATH: String
 }
 
 let defaultConfig = Config(LIMIT_TRACKED_APPLICATIONS: 100,
@@ -22,7 +23,10 @@ let defaultConfig = Config(LIMIT_TRACKED_APPLICATIONS: 100,
                            INACTIVE_TEXT: "N/A",
                            DO_NOT_TRACK_APPS: [
                                 "iterm", "kkammone"
-                           ])
+                           ],
+                           TEXT_EDITOR_PATH: "/Applications/TextEdit.app"
+                    )
+
 
 var config = readConfig(defaultConfig: defaultConfig)
 

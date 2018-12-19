@@ -18,8 +18,8 @@ class Strategy :NSObject {
     var text: String
     var strategy: String
     var keyEquivalent:String
-    var function: (WindowsForScreen) -> ()
-    init(text:String, strategy:String, function:@escaping (WindowsForScreen) -> (), keyEquivalent: String) {
+    var function: (WindowsForScreen, Swindler.State) -> ()
+    init(text:String, strategy:String, function:@escaping (WindowsForScreen, Swindler.State) -> (), keyEquivalent: String) {
         self.text=text
         self.strategy = strategy
         self.function = function
@@ -30,6 +30,8 @@ class Strategy :NSObject {
 class WindowsForScreen : NSObject {
     var screen: Swindler.Screen
     var windows : [Swindler.Window] = []
+    override var description: String{
+        return "WS: \(self.screen.debugDescription), windows: \(self.windows)"}
     init(screen : Swindler.Screen) {
         self.screen = screen
     }
@@ -76,11 +78,14 @@ class Windowing: NSObject {
     func adjustSizing() {
         self.sizingStrategyAlternated = !self.sizingStrategyAlternated
         print("adjustSizing")
+        print(self.getRecentWindowsList())
         for a in self.getRecentWindowsList() {
             if(self.sizingStrategyAlternated) {
-                self.sizingStrategies[self.sizingStrategy]!.function(a)
+                print("alternated")
+                self.sizingStrategies[self.sizingStrategy]!.function(a, self.swindler)
             } else {
-                sizingStrategyLatestMax(ws: a)
+                print("latest max")
+                sizingStrategyLatestMax(ws: a, state: self.swindler)
             }
         }
     }
@@ -196,69 +201,54 @@ class Windowing: NSObject {
             print("NOT tracked app, IGNORING")
         }
     }
-    
 }
 
-func sizingStrategyLatestMax(ws : WindowsForScreen)  {
+func sizingStrategyLatestMax(ws : WindowsForScreen, state: Swindler.State)  {
     for (index,window) in ws.windows.enumerated() {
         if(index == 0){
-            //window.frame.set(CGRect(x: 0, y: 0, width: xRes, height: yRes))
             window.position.set(CGPoint(x: ws.screen.frame.minX, y: ws.screen.frame.minY))
             window.size.set(CGSize(width: ws.screen.frame.width, height: ws.screen.frame.height))
             window.isMinimized.set(false)
-        } else {
-            window.isMinimized.set(true)
+            window.application.isHidden.set(false)
+            state.frontmostApplication.set(window.application)
         }
     }
 }
 
-func sizingStrategy4(ws : WindowsForScreen) {
+func sizingStrategyOnePlus(ws : WindowsForScreen, state: Swindler.State, plusCount : Int) {
     for (index,window) in ws.windows.enumerated() {
         if(index == 0){
-            // window.frame.set(CGRect(x: 0, y: 0, width: xRes/2, height: yRes))
-            window.position.set(CGPoint(x: ws.screen.frame.minX, y: ws.screen.frame.minY))
-            window.size.set(CGSize(width: ws.screen.frame.width/2, height: ws.screen.frame.height))
-            window.isMinimized.set(false)
-        } else if(index < 4) {
-            //window.frame.set(CGRect(x: xRes/2, y: (CGFloat(index-1)*(yRes/3.0)), width: xRes/2, height:  yRes/3))
-            window.position.set(CGPoint(x:ws.screen.frame.minX + ws.screen.frame.width / 2, y: ws.screen.frame.minY + (CGFloat(index-1)*( ws.screen.frame.height / 3))))
-            window.size.set(CGSize(width:ws.screen.frame.width / 2, height:  ws.screen.frame.height / 3 ))
-            window.isMinimized.set(false)
+            let width = ws.screen.frame.width / 2
+            let height = ws.screen.frame.height
+            let x = ws.screen.frame.minX
+            let y = ws.screen.frame.minY
+            window.position.set(CGPoint(x: x, y: y))
+            window.size.set(CGSize(width:width, height: height))
+            print("POSITION index \(index) X: \(x) Y: \(y) window: \(window)")
+        } else if(index <= plusCount) {
+            let width = ws.screen.frame.width / 2
+            let height = ws.screen.frame.height / CGFloat(plusCount)
+            let x = ws.screen.frame.minX + ws.screen.frame.width / 2
+            let y =  ws.screen.frame.minY + (CGFloat(index-1)*height)
+            window.position.set(CGPoint(x:x, y:y))
+            window.size.set(CGSize(width:width, height: height))
+            print("POSITION index \(index) X: \(x) Y: \(y) window: \(window)")
         } else {
-            window.isMinimized.set(true)
+            print("IGNORE   index \(index) \(window)")
+        }
+        if(index <= plusCount) {
+            window.isMinimized.set(false)
+            window.application.isHidden.set(false)
+            state.frontmostApplication.set(window.application)
         }
     }
 }
-func sizingStrategy3(ws : WindowsForScreen) {
-    for (index,window) in ws.windows.enumerated() {
-        if(index == 0){
-            window.position.set(CGPoint(x: ws.screen.frame.minX, y: ws.screen.frame.minY))
-            window.size.set(CGSize(width: ws.screen.frame.width/2, height: ws.screen.frame.height))
-            window.isMinimized.set(false)
-        } else if(index < 3) {
-        
-            window.position.set(CGPoint(x:ws.screen.frame.minX + ws.screen.frame.width / 2, y: ws.screen.frame.minY + (CGFloat(index-1)*( ws.screen.frame.height / 2))))
-            window.size.set(CGSize(width:ws.screen.frame.width / 2, height:  ws.screen.frame.height / 2 ))
-            window.isMinimized.set(false)
-        } else {
-            window.isMinimized.set(true)
-        }
-    }
+func sizingStrategy4(ws : WindowsForScreen, state: Swindler.State) {
+    sizingStrategyOnePlus(ws: ws, state: state, plusCount: 3)
 }
-func sizingStrategy2(ws : WindowsForScreen) {
-    for (index,window) in ws.windows.enumerated() {
-        if(index == 0){
-            window.position.set(CGPoint(x: ws.screen.frame.minX, y: ws.screen.frame.minY))
-            window.size.set(CGSize(width: ws.screen.frame.width/2, height: ws.screen.frame.height))
-            window.isMinimized.set(false)
-        } else if(index <= 1) {
-            window.position.set(CGPoint(x:  ws.screen.frame.minX +  ws.screen.frame.width / 2, y:  ws.screen.frame.minY))
-            window.size.set(CGSize(width: ws.screen.frame.width/2, height: ws.screen.frame.height))
-            window.isMinimized.set(false)
-        } else {
-            window.isMinimized.set(true)
-        }
-    }
-
+func sizingStrategy3(ws : WindowsForScreen, state: Swindler.State) {
+    sizingStrategyOnePlus(ws: ws, state: state, plusCount: 2)
 }
-
+func sizingStrategy2(ws : WindowsForScreen, state: Swindler.State) {
+    sizingStrategyOnePlus(ws: ws, state: state, plusCount: 1)
+}
